@@ -1,25 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  runs = {
+    user: {
+      mostRecent: 0,
+      longestRun: 0
+    }
+    
+  }
+
+  handleButton = () => {
+    console.log('add run button was clicked');
+  }
+
+
+  handleMilesRan = (event, propertyName) => {
+    this.setState({
+      user: {
+        ...this.runs.user,
+        [propertyName]: event.target.value
+        
+      }
+    })
+  }
+
+
+
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+       <h1>React Track Runner</h1>
+        <input type="text" placeholder="Miles Ran" onChange={(event) => this.handleMilesRan(event, 'mostRecent')}/>
+        <button onClick={this.handleButton}>Add New Run</button>
+       <p>Recent Run: {this.runs.user.mostRecent}</p>
+       <p>Longest Run: {this.runs.user.longestRun} </p>
       </div>
     );
   }

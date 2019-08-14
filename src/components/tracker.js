@@ -1,3 +1,7 @@
+import React, { Component } from 'react';
 
+class Tracker extends Component {
+    
+}
 
-export default tracker;
+export default Tracker;
