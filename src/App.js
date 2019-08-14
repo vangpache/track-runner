@@ -3,24 +3,22 @@ import './App.css';
 
 class App extends Component {
 
+  state = {
+    mostRecent: 0,
+    longestRun: 0
+  }
 
-   runs = {
-     mostRecent: 0,
-     longestRun: 0
-   }
- 
- 
 
   handleButton = (event) => {
-    console.log('add run button was clicked:', this.runs);
-    // this.setState({mostRecent: this.runs.user.mostRecent})
-    this.setState({mostRecent: this.mostRecent})
+    console.log('add run button was clicked:',this.state);
+
   }
 
 
     handleMiles = (event) => {
     console.log(event.target.value);
-    this.setState = ({ mostRecent: event.target.value })
+    this.setState ({mostRecent: event.target.value })
+    console.log(this.state);
     
   }
 
@@ -33,8 +31,8 @@ class App extends Component {
        <h1>React Track Runner</h1>
         <input type="number" placeholder="Miles Ran" onChange={this.handleMiles} />
         <button onClick={this.handleButton}>Add New Run</button>
-       <p>Recent Run: {this.runs.mostRecent}</p>
-        <p>Longest Run:  {this.runs.longestRun}</p>
+       <p>Recent Run: {this.state.mostRecent}</p>
+        <p>Longest Run:  {this.state.longestRun}</p>
       </div>
     );
   }
