@@ -12,7 +12,8 @@ class App extends Component {
   }
 
   handleButton = () => {
-    console.log('add run button was clicked');
+    console.log('add run button was clicked:', this.runs);
+    // this.setState({mostRecent: this.runs.user.mostRecent})
   }
 
 
@@ -21,7 +22,6 @@ class App extends Component {
       user: {
         ...this.runs.user,
         [propertyName]: event.target.value
-        
       }
     })
   }
@@ -33,7 +33,7 @@ class App extends Component {
     return (
       <div className="App">
        <h1>React Track Runner</h1>
-        <input type="text" placeholder="Miles Ran" onChange={(event) => this.handleMilesRan(event, 'mostRecent')}/>
+        <input type="number" placeholder="Miles Ran" onChange={(event) => this.handleMilesRan(event, 'mostRecent')}/>
         <button onClick={this.handleButton}>Add New Run</button>
        <p>Recent Run: {this.runs.user.mostRecent}</p>
        <p>Longest Run: {this.runs.user.longestRun} </p>
